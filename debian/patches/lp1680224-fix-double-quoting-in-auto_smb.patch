@@ -1,0 +1,26 @@
+Description: autofs-5.1.6 - fix double quoting in auto.smb
+
+The example program mount script installed to /etc/auto.smb incorrectly
+adds a quote for the trailing dollar of special Windows mounts. But they
+are already surrounded by double quotes. This may have been handled by
+mount.cifs at some point but it's failing now.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+
+Author: Ian Kent <raven@themaw.net>
+Origin: upstream, https://tinyurl.com/ydavbsel
+Bug-Ubuntu: https://launchpad.net/bugs/1680224
+Reviewed-By: Rafael David Tinoco <rafaeldtinoco@ubuntu.com>
+Last-Update: 2020-06-03
+
+--- autofs-5.1.6.orig/samples/auto.smb
++++ autofs-5.1.6/samples/auto.smb
+@@ -75,8 +75,6 @@ $SMBCLIENT $smbopts -gL "$key" 2>/dev/nu
+ 		  dir = $2
+ 		  loc = $2
+ 		  # Enclose mount dir and location in quotes
+-		  # Double quote "$" in location as it is special
+-		  gsub(/\$$/, "\\$", loc);
+ 		  gsub(/\&/,"\\\\&",loc)
+ 		  print " \\\n\t \"/" dir "\"", "\"://" key "/" loc "\""
+ 		}

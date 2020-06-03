@@ -1,0 +1,11 @@
+11default_automaster_location.patch
+12disable_default_auto_master.patch
+15auto_net_nfs4.patch
+fix-ldflags.patch
+fix-ssslib-search.patch
+remove-kernel-mount.nfs-version-check.patch
+mount-hidden-samba-shares.patch
+hardening-flags.patch
+spelling-error-fixes.patch
+fix-lookup-ldap-crash.patch
+lp1680224-fix-double-quoting-in-auto_smb.patch
